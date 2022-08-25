@@ -16,3 +16,10 @@ data = r.json()
 # Prints the data to a file
 with open('out.json', 'w+') as f:
   f.write(json.dumps(data, indent=4))
+
+total_sentiment = 0
+for news in data["feed"]:
+  score = news["ticker_sentiment"][0]["ticker_sentiment_score"]
+  total_sentiment += float(score)
+
+print(f"Overall sentiment score of {ticker}: {total_sentiment}")
