@@ -24,4 +24,9 @@ for news in data["feed"]:
 
 numArticles = len(data["feed"])
 avg_sentiment = total_sentiment / (numArticles if numArticles > 0 else 1)
-print(f"Overall sentiment score of {ticker} with {numArticles} news articles: {avg_sentiment}")
+performance = "neutral"
+if avg_sentiment > 0:
+  performance = "positive"
+elif avg_sentiment < 0:
+  performance = "negative"
+print(f"Overall sentiment score of {ticker} with {numArticles} news articles is {performance}.")
