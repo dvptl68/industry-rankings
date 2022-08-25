@@ -22,4 +22,6 @@ for news in data["feed"]:
   score = news["ticker_sentiment"][0]["ticker_sentiment_score"]
   total_sentiment += float(score)
 
-print(f"Overall sentiment score of {ticker}: {total_sentiment}")
+numArticles = len(data["feed"])
+avg_sentiment = total_sentiment / (numArticles if numArticles > 0 else 1)
+print(f"Overall sentiment score of {ticker} with {numArticles} news articles: {avg_sentiment}")
